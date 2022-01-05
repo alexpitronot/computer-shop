@@ -1,0 +1,17 @@
+<hr>
+<div>
+    <h1>Welcome to our events!</h1>
+       <h2>Our closest events:</h2>           
+       <div class="events">
+       Event: {{event.name}}
+       </div>
+       <div class="events">
+       Date: {{event.date}}
+       </div>
+       <div class="events">
+       Time: {{event.time}}
+       </div>
+       <div class="events">
+       Address: <app-event-address [address]="event.location"></app-event-address>
+       </div>
+</div>
