@@ -15,4 +15,9 @@
      Address: {{event.location.address}}, {{event.location.city}}, {{event.location.country}}
      </div>
      </div><event-address [address]="event.location"></event-address>
-    
+     
+        <td>{{event.name}}</td>
+        <td>{{event.date}} </td>      
+        <td>{{event.location?.address}}</td>
+        <td>{{event.location?.city}}</td>
+        <td>{{event.location?.country}}</td>
