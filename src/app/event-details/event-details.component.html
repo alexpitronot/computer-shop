@@ -6,7 +6,7 @@
        <table class="outer">
         <thead>
           <tr class="events">
-            <th>Event number</th>
+            <th>#</th>
             <th>Event</th>
             <th>Date</th>      
             <th>Time</th>
@@ -15,13 +15,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let event of events; let i=index;" class="events">
+          <tr *ngFor="let event of events; let i=index" class="events">
             <td>{{i+1 | number:'1.1-2'}}</td>
-            <td>{{event.name}}</td>
-            <td>{{event.date | date:'dd-MM-yyy'}} </td>      
-            <td>{{event.time}}</td>
-            <td><app-event-address [address]="event.location"></app-event-address></td>
-            <td></td>
+            <td [ngClass]="getTitleClass(event.label)">
+                {{event?.name}}
+                <span [ngSwitch]="event.label">
+                    <span *ngSwitchCase="'new'" class="label right">new</span>
+                    <span *ngSwitchCase="'private'" class="label right">private</span>
+                    <span *ngSwitchCase="'public'" class="label right">public</span>
+                    <span *ngSwitchDefault class="label right">in progress</span>
+                </span>
+            </td>
+            <td>{{event?.date | date:'dd-MM-yyy'}} </td>      
+            <td>{{event?.time}}</td>
+            <td>                
+                <app-event-address [address]="event?.location"></app-event-address>                
+            </td>
+            <td>
+                <div *ngIf="event.registration; else elseBlock" class="label true">Open for registration</div>
+                <ng-template #elseBlock><div class="label false">Close for registration</div></ng-template>
+            </td>
           </tr>
         </tbody>
       </table>
