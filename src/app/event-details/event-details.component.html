@@ -16,9 +16,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let event of events; let i=index" class="events">
-            <td>{{i+1 | number:'1.1-2'}}</td>
-            <td [ngClass]="getTitleClass(event.label)" [ngStyle]="getTitleStyle(event.label)">
-                {{event?.name}}
+            <td>{{event.id | number:'1.1-2'}}</td>
+            <td>
+              <a [ngClass]="getTitleClass(event.label)" [ngStyle]="getTitleStyle(event.label)" [routerLink]="['eventDetail', event.id]">{{event?.name}}</a>
                 <span [ngSwitch]="event.label">
                     <span *ngSwitchCase="'new'" class="label right">{{event.label}}</span>
                     <span *ngSwitchCase="'private'" class="label right">{{event.label}}</span>
@@ -29,7 +29,7 @@
             <td>{{event?.date | date:'dd-MM-yyy'}} </td>      
             <td>{{event?.time}}</td>
             <td>                
-                <app-event-address [address]="event?.location" [status]="status"></app-event-address>                
+                <app-event-address [address]="event?.location" [status]="status" [class]="'left'"></app-event-address>                
             </td>
             <td>
                 <div *ngIf="event.registration; else elseBlock" class="label true">Open for registration</div>

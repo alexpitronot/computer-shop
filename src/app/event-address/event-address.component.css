@@ -22,6 +22,11 @@
     margin-right:0.5em;    
 }
 
+.right {
+    float: right;
+    margin-left:0.5em;    
+}
+
 .address {
     top: 0.2em;
     position: relative;

@@ -1,3 +1,3 @@
-<span *ngIf="address" [hidden]="status" class="left"><button class="label true" (click)="status=true">Hide Address</button></span>
+<span *ngIf="address" [hidden]="status" [ngClass]="getTitleClass()"><button class="label true" (click)="status=true">Hide Address</button></span>
 <span *ngIf="address" [hidden]="!status" class="left"><button class="label false" (click)="status=false">Show Address</button></span>
 <span *ngIf="address" [hidden]="status" class="address">{{address?.street}}, {{address?.city}}, {{address?.country}}</span>

@@ -8,10 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EventAddressComponent implements OnInit {
   @Input() address?:any;  
   @Input() status?:boolean;
+  @Input() class?:any;
   
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  getTitleClass() {
+    return this.class;
+  }
 }

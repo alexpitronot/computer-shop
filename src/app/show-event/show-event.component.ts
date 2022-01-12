@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { EventService } from '../event.service'
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.css']
+  selector: 'app-show-event',
+  templateUrl: './show-event.component.html',
+  styleUrls: ['./show-event.component.css']
 })
-export class EventDetailsComponent implements OnInit {
+export class ShowEventComponent implements OnInit {
 
-  constructor(private eventService:EventService) { }
-  //events: any
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService,
+    private location: Location
+  ) { }
+
+  event:any
+  status=true
+
   ngOnInit(): void {
-    //this.events = this.eventService.getEvents() # build each time we enter the component
-  }
-  status=true  
-  events = this.eventService.getEvents()  
+    this.event = this.eventService.getEvent(+this.route.snapshot.params['eventId'])
+  }   
 
   getTitleClass(eventFormat:any) {
     if (eventFormat === 'new') 
@@ -41,4 +48,8 @@ export class EventDetailsComponent implements OnInit {
     
     return {color: 'rgb(38, 0, 255)'}
   }
+  
+  goBack(): void {
+    this.location.back();
+    }
 }
