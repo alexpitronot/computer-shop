@@ -1,3 +1,3 @@
-    <span [hidden]="hidden" class="left"><button class="label true" (click)="hidden=true">Hide Address</button></span>
-    <span [hidden]="!hidden" class="left"><button [hidden]="!hidden" class="label false" (click)="hidden=false">Show Address</button></span>
-    <span [hidden]="hidden" class="address">{{address?.street}}, {{address?.city}}, {{address?.country}}</span>
+<span *ngIf="address" [hidden]="status" class="left"><button class="label true" (click)="status=true">Hide Address</button></span>
+<span *ngIf="address" [hidden]="!status" class="left"><button class="label false" (click)="status=false">Show Address</button></span>
+<span *ngIf="address" [hidden]="status" class="address">{{address?.street}}, {{address?.city}}, {{address?.country}}</span>

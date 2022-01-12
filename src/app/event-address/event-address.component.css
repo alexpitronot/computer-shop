@@ -26,3 +26,7 @@
     top: 0.2em;
     position: relative;
 }
+
+.big {
+    font-size: 120%;
+}

@@ -17,19 +17,19 @@
         <tbody>
           <tr *ngFor="let event of events; let i=index" class="events">
             <td>{{i+1 | number:'1.1-2'}}</td>
-            <td [ngClass]="getTitleClass(event.label)">
+            <td [ngClass]="getTitleClass(event.label)" [ngStyle]="getTitleStyle(event.label)">
                 {{event?.name}}
                 <span [ngSwitch]="event.label">
-                    <span *ngSwitchCase="'new'" class="label right">new</span>
-                    <span *ngSwitchCase="'private'" class="label right">private</span>
-                    <span *ngSwitchCase="'public'" class="label right">public</span>
+                    <span *ngSwitchCase="'new'" class="label right">{{event.label}}</span>
+                    <span *ngSwitchCase="'private'" class="label right">{{event.label}}</span>
+                    <span *ngSwitchCase="'public'" class="label right">{{event.label}}</span>
                     <span *ngSwitchDefault class="label right">in progress</span>
                 </span>
             </td>
             <td>{{event?.date | date:'dd-MM-yyy'}} </td>      
             <td>{{event?.time}}</td>
             <td>                
-                <app-event-address [address]="event?.location"></app-event-address>                
+                <app-event-address [address]="event?.location" [status]="status"></app-event-address>                
             </td>
             <td>
                 <div *ngIf="event.registration; else elseBlock" class="label true">Open for registration</div>
