@@ -14,6 +14,7 @@ export class EventAddressComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   getTitleClass() {
     return this.class;
   }
