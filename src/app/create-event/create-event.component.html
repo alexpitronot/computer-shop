@@ -1,5 +1,5 @@
 <div>
-    <form  #eventForm="ngForm" (ngSubmit)="saveEvent(eventForm.value)">      
+    <form #eventForm="ngForm" (ngSubmit)="saveEvent(eventForm.value)">      
       <div class="form-group" [ngClass]="{'error': eventForm.controls['name']?.invalid && eventForm.controls['name']?.touched}">
         <label for="event-name">Event Name: </label>
         <input (ngModel)="name" name="name" id="event-name" type="text" required/>
@@ -15,7 +15,7 @@
       </div>
       <div ngModelGroup="location">
         <div class="form-group">
-          <label for="street">Address: </label>
+          <label for="street">Street: </label>
           <input (ngModel)="street" name="street" id="event-street" type="text"/>
         </div>
         <div class="form-group">
@@ -26,19 +26,20 @@
           <label for="country">Country: </label>
           <input (ngModel)="country" name="country" id="event-country" type="text"/>
         </div>
+      </div>
         <div class="form-group">
             <label for="registration">Registration: </label>
-            <select  #Registration id="registration">
-                <option *ngFor="let Registration of registration" (ngModel)="registration">{{Registration}}</option>
-              </select>
+            <select id="registration" name="registration" ngModel>
+              <option *ngFor="let Registration of registration" [value]="Registration">{{Registration}}</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="label">Label: </label>
-            <select  #Label id="label">
-                <option *ngFor="let Label of label" (ngModel)="label">{{Label}}</option>
-              </select>
-          </div>
-      </div>
+            <select id="label" name="label" ngModel>
+              <option *ngFor="let Label of label" [value]="Label">{{Label}}</option>
+            </select>
+          </div>      
+      <br>
       <button type="submit" [disabled]="eventForm.invalid">Save</button>
       <button type="button" (click)="cancel()">Cancel</button>
     </form>

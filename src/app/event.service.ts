@@ -20,11 +20,11 @@ export class EventService {
   }
 
   saveEvent(event:any) {
-    event.id = 99
+    event.id = this.genId(this.EVENTS)
     this.EVENTS.push(event)  
   }
 
-  /*genId(Events:any): number {
-    return Events.length > 0 ? Math.max(...Events.map(event => event.id === Events)) + 1 : 0;
-  }*/
+  genId(Events:any): number {
+    return Events.length > 0 ? Math.max(...Events.map((EVENTS: { id: number }) => EVENTS.id)) + 1 : 0;
+  }
 }
