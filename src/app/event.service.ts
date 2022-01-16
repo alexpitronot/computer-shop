@@ -25,6 +25,6 @@ export class EventService {
   }
 
   genId(Events:any): number {
-    return Events.length > 0 ? Math.max(...Events.map((EVENTS: { id: number }) => EVENTS.id)) + 1 : 0;
+    return Events.length > 0 ? Math.max(...Events.map((EVENTS: { id: number }) => EVENTS.id)) + 1 : 1;
   }
 }
