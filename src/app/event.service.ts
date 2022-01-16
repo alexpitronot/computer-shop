@@ -18,4 +18,13 @@ export class EventService {
   getEvent(eventId:number) {
     return this.EVENTS.find(event => event.id === eventId)
   }
+
+  saveEvent(event:any) {
+    event.id = 99
+    this.EVENTS.push(event)  
+  }
+
+  /*genId(Events:any): number {
+    return Events.length > 0 ? Math.max(...Events.map(event => event.id === Events)) + 1 : 0;
+  }*/
 }
